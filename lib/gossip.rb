@@ -18,6 +18,15 @@ class Gossip
         end
         return all_gossips
       end
+      def self.find(id)
+        new_array = []
+        CSV.read("./db/gossip.csv").each_with_index do |row, index|
+          if (id == index+1)
+            new_array << Gossip.new(row[0], row[1])
+          end
+        end
+        return new_array
+      end
 
 end
 
